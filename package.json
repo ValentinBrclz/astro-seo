@@ -1,0 +1,52 @@
+{
+  "name": "@northsoon/astro-seo",
+  "version": "1.0.0",
+  "description": "SEO component for Astro with proper TypeScript support - Enhanced version",
+  "type": "module",
+  "main": "./index.ts",
+  "types": "./src/types.ts",
+  "exports": {
+    ".": {
+      "types": "./src/types.ts",
+      "import": "./index.ts"
+    },
+    "./types": {
+      "types": "./src/types.ts",
+      "import": "./src/types.ts"
+    }
+  },
+  "files": [
+    "src",
+    "index.ts"
+  ],
+  "keywords": [
+    "astro",
+    "astro-component",
+    "seo",
+    "meta-tags",
+    "open-graph",
+    "twitter-cards",
+    "typescript",
+    "withastro"
+  ],
+  "author": "Manuel Caballero <https://github.com/ByManuelCaballero>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ByManuelCaballero/astro-seo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ByManuelCaballero/astro-seo/issues"
+  },
+  "homepage": "https://github.com/ByManuelCaballero/astro-seo#readme",
+  "peerDependencies": {
+    "astro": "^4.0.0 || ^5.0.0"
+  },
+  "dependencies": {
+    "html-escaper": "^3.0.3"
+  },
+  "devDependencies": {
+    "astro": "^5.0.0",
+    "typescript": "^5.7.2"
+  }
+}

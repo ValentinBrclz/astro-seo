@@ -1,0 +1,12 @@
+# Don't include in npm package
+PROYECTO-NPM-ASTRO-SEO.md
+USAGE-GUIDE.md
+.gitignore
+.vscode/
+.idea/
+*.log
+coverage/
+.env*
+node_modules/
+pnpm-lock.yaml
+test/

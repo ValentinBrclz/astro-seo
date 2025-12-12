@@ -1,24 +1,30 @@
 {
   "name": "@northsoon/astro-seo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "SEO component for Astro with proper TypeScript support - Enhanced version",
   "type": "module",
   "main": "./index.ts",
-  "types": "./src/types.ts",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./src/types.ts",
-      "import": "./index.ts"
+      "types": "./dist/index.d.ts",
+      "import": "./index.ts",
+      "default": "./index.ts"
     },
     "./types": {
-      "types": "./src/types.ts",
+      "types": "./dist/src/types.d.ts",
       "import": "./src/types.ts"
     }
   },
   "files": [
     "src",
+    "dist",
     "index.ts"
   ],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
   "keywords": [
     "astro",
     "astro-component",
@@ -46,6 +52,7 @@
     "html-escaper": "^3.0.3"
   },
   "devDependencies": {
+    "@types/html-escaper": "^3.0.4",
     "astro": "^5.0.0",
     "typescript": "^5.7.2"
   }

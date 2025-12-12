@@ -2,11 +2,13 @@
 
 🚀 SEO component for Astro with full TypeScript support.
 
-An enhanced, maintained version of `@astrolib/seo` with properly exported TypeScript types and better documentation.
+An enhanced, maintained version of `@astrolib/seo` with properly exported TypeScript types, declaration files (`.d.ts`), and better documentation.
 
 ## ✨ Features
 
-- ✅ Properly exported TypeScript types
+- ✅ **Full TypeScript support** with auto-generated `.d.ts` declaration files
+- ✅ **IDE autocompletion** for all props (works out of the box!)
+- ✅ **Type validation** - TypeScript catches errors before runtime
 - ✅ Open Graph support (Facebook, LinkedIn, etc.)
 - ✅ Twitter Cards support
 - ✅ Customizable robots meta tags
@@ -15,6 +17,24 @@ An enhanced, maintained version of `@astrolib/seo` with properly exported TypeSc
 - ✅ Custom additional meta tags
 - ✅ Custom additional link tags
 - ✅ Compatible with Astro 4.x and 5.x
+
+## 🔧 How TypeScript Types Work
+
+This package includes pre-built declaration files (`.d.ts`) in the `dist/` folder. When you install the package:
+
+1. **TypeScript automatically finds the types** via `package.json` → `"types": "./dist/index.d.ts"`
+2. **No manual setup required** - just import and use
+3. **Full autocompletion** in VS Code, WebStorm, and other IDEs
+4. **Type checking** validates your props at compile time
+
+```
+@northsoon/astro-seo/
+├── index.ts              ← Source code
+├── dist/
+│   ├── index.d.ts        ← Type declarations (auto-detected)
+│   └── src/
+│       └── types.d.ts    ← All exported types
+```
 
 ## 📦 Installation
 
@@ -182,9 +202,10 @@ import { AstroSeo } from "@northsoon/astro-seo";
 
 ## 📝 TypeScript Types
 
-All types are exported and available:
+All types are exported and **work automatically** - no additional setup needed!
 
 ```typescript
+import { AstroSeo } from "@northsoon/astro-seo";
 import type {
   AstroSeoProps,
   OpenGraph,
@@ -196,6 +217,34 @@ import type {
   LanguageAlternate,
   AdditionalRobotsProps,
 } from "@northsoon/astro-seo";
+
+// TypeScript validates your props
+const seoConfig: AstroSeoProps = {
+  title: "My Page",
+  description: "Page description",
+  openGraph: {
+    type: "website",
+    site_name: "My Site", // ✅ Autocompletion works!
+  },
+};
+```
+
+### What You Get
+
+| Feature | Description |
+|---------|-------------|
+| **Autocompletion** | All props show up in your IDE |
+| **Type checking** | Errors caught before runtime |
+| **Hover documentation** | See prop descriptions on hover |
+| **Refactoring support** | Safe renaming across your project |
+
+### Verifying Types Work
+
+Run `astro check` in your project to verify:
+
+```bash
+npx astro check
+# Should show: 0 errors ✓
 ```
 
 ## 🔄 Migration from @astrolib/seo
@@ -209,7 +258,33 @@ If you are coming from `@astrolib/seo`, migration is straightforward:
 
 Props are 100% compatible!
 
-## 📄 License
+## � Troubleshooting
+
+### TypeScript can't find types
+
+Make sure you have TypeScript configured in your Astro project:
+
+```bash
+npx astro add check
+```
+
+This installs `@astrojs/check` and `typescript` if missing.
+
+### IDE not showing autocompletion
+
+1. Restart your TypeScript server (VS Code: `Ctrl+Shift+P` → "TypeScript: Restart TS Server")
+2. Make sure you're on version `1.0.1` or higher
+
+### Verify installation
+
+```bash
+# Check installed version
+npm list @northsoon/astro-seo
+
+# Should show @northsoon/astro-seo@1.0.1 or higher
+```
+
+## �📄 License
 
 MIT © [Manuel Caballero](https://github.com/ByManuelCaballero)
 
